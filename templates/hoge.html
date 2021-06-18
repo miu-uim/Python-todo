@@ -5,18 +5,35 @@
     <title>TODO</title>
 </head>
 <body>
-<h1>result</h1>
-<h4>{{todo_result}}</h4>
-<form action="/hoge" method="POST">
-<!--    <label for="title">Title</label>-->
-<!--    <input type="text" name="name">-->
-    <input type="text" name="title">
-    <input type="submit" value="追加">
-</form>
-<ul>
-    {% for todo in todo_result.values() %}
-        <li>{{todo}}</li>
-    {% endfor %}
-</ul>
+    <h1>テーブルジョイン</h1>
+    <h4>empとdep結合：{{ results }}</h4>
+    <h4>整形板：{{ dic_result }}</h4>
+    <ul>
+        {% for id in id_lists %}
+        <li>{{ dic_result[id] }}</li>
+        {% endfor %}
+    </ul>
+    <table border="1">
+<!--        {% for id in id_lists %}-->
+<!--            {{ dic_result[id]['name'] }}-->
+<!--        {% endfor %}-->
+        <tr>
+            <th>ID</th>
+            <th>名前</th>
+            <th>年齢</th>
+            <th>性別</th>
+            <th>部署名</th>
+        </tr>
+        {% for id in id_lists %}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{ dic_result[id]['name'] }}</td>
+            <td>{{ dic_result[id]['age'] }}</td>
+            <td>{{ dic_result[id]['gender'] }}</td>
+            <td>{{ dic_result[id]['dep_name'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
 </body>
 </html>

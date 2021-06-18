@@ -148,3 +148,57 @@ def hello_world():
         #         # json.dump(json_results, f, ensure_ascii=False, indent=4)
         #         json.dump(dic_results, f, ensure_ascii=False, indent=4)
     return render_template('home.html', dic_result=dic_result, json_results=json_results)
+
+@app.route('/ghi')
+def joinenp():
+    dic_result = {}
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute('SELECT id,name,age,gender,dep_name FROM emp INNER JOIN dep ON emp.dep_id = dep.dep_id')
+            results = cur.fetchall()
+            id_lists = []  # 取得したresultsのidだけを入れたリスト
+            name_lists = []
+            age_lists = []
+            gender_lists = []
+            dep_name_lists = []  # 結合するdep_nameのリスト
+            for tp_result in results:
+                list_result = list(tp_result)  #
+                print(list_result)
+                list_id = list_result[0]  # list_resultのid
+                id_lists.append(list_id)
+
+                list_name = list_result[1]
+                name_lists.append(list_name)
+
+                list_age = list_result[2]
+                age_lists.append(list_age)
+
+                list_gender = list_result[3]
+                gender_lists.append(list_gender)
+
+                list_dep_name = list_result[4]
+                dep_name_lists.append(list_dep_name)
+
+                # print(id_lists)
+                # dic_result = {}
+                id_id = 0
+                for id in id_lists:
+                    dic_result[id] = {}
+                    # for l in list_result:
+                    #     print(l)
+                    dic_result[id]['name'] = name_lists[id_id]
+                    dic_result[id]['age'] = age_lists[id_id]
+                    dic_result[id]['gender'] = gender_lists[id_id]
+                    dic_result[id]['dep_name'] = dep_name_lists[id_id]
+                    id_id += 1
+            print(dic_result)
+            print(dic_result[10]['name'])
+            print(type(dic_result))
+            json_results = json.dumps(dic_result, ensure_ascii=False, indent=4)
+            print(json_results)
+            print(id_lists)
+            with open("en_dic_join_results.json", "w") as f:
+                # json.dump(json_results, f, ensure_ascii=False, indent=4)
+                json.dump(dic_result, f, ensure_ascii=False, indent=4)
+
+    return render_template('hoge.html',results=results,dic_result=dic_result,id_lists=id_lists)
