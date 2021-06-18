@@ -79,7 +79,6 @@ def hello():
             json_results = json.dumps(results, ensure_ascii=False, indent=4)
             # print(json_results)
         with open("en_results.json", "w") as f:
-            # json.dump(json_results, f, ensure_ascii=False, indent=4)
             json.dump(dic_results, f, ensure_ascii=False, indent=4)
     return render_template('abc.html', results=results, json_results=json_results, dic_results=dic_results)
 
