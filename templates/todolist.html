@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO</title>
+</head>
+<body>
+<h1>TODOリスト</h1>
+<h4>{{todo_result}}</h4>
+<form action="/" method="POST">
+    <input type="text" name="title">
+    <input type="submit" value="追加">
+</form>
+<ul>
+    {% for id, title in todo_result.items() %}
+        <li>{{id}}：{{title}}</li>
+        <a href="/update/{{id}}" role="button">更新</a>
+        <a href="/detail/{{id}}" role="button">削除</a>
+    {% endfor %}
+</ul>
+</body>
+</html>

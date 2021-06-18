@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO</title>
+</head>
+<body>
+<h1>result</h1>
+<h4>{{todo_result}}</h4>
+<form action="/hoge" method="POST">
+<!--    <label for="title">Title</label>-->
+<!--    <input type="text" name="name">-->
+    <input type="text" name="title">
+    <input type="submit" value="追加">
+</form>
+<ul>
+    {% for todo in todo_result.values() %}
+        <li>{{todo}}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

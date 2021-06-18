@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>UPDATE</title>
+</head>
+<body>
+    <h1>UPDATE</h1>
+    {% for id, title in result.items() %}
+    {{ title }}
+    <form action="/update/{{id}}" method="POST">
+        <label for ="title">Title</label>
+        <input type="text" name ="update_title">
+        <input type="submit" value="変更">
+    </form>
+    {% endfor %}
+</body>
+</html>

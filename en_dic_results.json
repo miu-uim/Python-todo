@@ -1,0 +1,32 @@
+{
+    "10": {
+        "name": "user1",
+        "age": 20,
+        "gender": "男",
+        "dep_id": 3
+    },
+    "20": {
+        "name": "user2",
+        "age": 30,
+        "gender": "男",
+        "dep_id": 1
+    },
+    "30": {
+        "name": "user3",
+        "age": 40,
+        "gender": "女",
+        "dep_id": 2
+    },
+    "1": {
+        "name": "Tom",
+        "age": 50,
+        "gender": "男",
+        "dep_id": 3
+    },
+    "40": {
+        "name": "Emma",
+        "age": 25,
+        "gender": null,
+        "dep_id": 2
+    }
+}
